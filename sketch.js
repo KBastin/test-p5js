@@ -1,12 +1,25 @@
+const SCREEN_WIDTH = window.innerWidth;
+const SCREEN_HEIGHT = window.innerHeight - 3;
+
+let steps = 10;
+
 function setup() {
-    
-    createCanvas(1000,1000);
+    createCanvas(SCREEN_WIDTH - 5, SCREEN_HEIGHT- 5);
+    console.log(SCREEN_HEIGHT, SCREEN_WIDTH);
 }
 
-function draw() {
-    background("yellow");
+async function draw() {
+    background("aqua");
 
-    for(let i=0; i<width; i+= 10){
-        line(i, 0, i, height);
+    for(let i=0; i<=width; i+= steps){
+        line(i, 0 + 50, i, height - 50);
     }
+
+    steps+=5;
+
+    await sleep(100);
+    
+    noLoop();
 }
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
